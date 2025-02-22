@@ -1,6 +1,6 @@
 # rede_social
 
-A new Flutter project.
+Projeto para criar o esqueleto de uma rede social no Flutter
 
 ## Getting Started
 
