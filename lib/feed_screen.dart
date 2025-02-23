@@ -1,4 +1,3 @@
-// feed_screen.dart
 import 'package:flutter/material.dart';
 
 class FeedScreen extends StatelessWidget {
@@ -26,7 +25,21 @@ class FeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Feed')),
+      appBar: AppBar(
+        title: Text('Feed'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {
+              // Navegar para a tela de perfil
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
+            },
+          ),
+        ],
+      ),
       body: ListView.builder(
         itemCount: posts.length,
         itemBuilder: (context, index) {
@@ -85,6 +98,77 @@ class FeedScreen extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+// Tela de Perfil (agora dentro de feed_screen.dart)
+class ProfileScreen extends StatelessWidget {
+  final String userName = "Usuário Teste";
+  final String userEmail = "usuario@teste.com";
+  final String userDescription =
+      "Olá! Eu sou um usuário de exemplo nesta rede social.";
+  final String userPhotoUrl =
+      "https://via.placeholder.com/150"; // URL da foto de perfil
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Perfil'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.edit),
+            onPressed: () {
+              // Navegar para a tela de edição de perfil (a ser implementada)
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Funcionalidade de edição em desenvolvimento'),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              backgroundImage: NetworkImage(userPhotoUrl),
+              radius: 50,
+            ),
+            SizedBox(height: 16.0),
+            Text(
+              userName,
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8.0),
+            Text(userEmail, style: TextStyle(fontSize: 16, color: Colors.grey)),
+            SizedBox(height: 16.0),
+            Text(
+              userDescription,
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 24.0),
+            ElevatedButton(
+              onPressed: () {
+                // Lógica para editar o perfil
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'Funcionalidade de edição em desenvolvimento',
+                    ),
+                  ),
+                );
+              },
+              child: Text('Editar Perfil'),
+            ),
+          ],
+        ),
       ),
     );
   }
