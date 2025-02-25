@@ -14,7 +14,9 @@ class _FeedScreenState extends State<FeedScreen> {
       'likes': 120,
       'isLiked': false,
       'comments':
-          <String>[], // Lista de comentários (agora tipada como List<String>)
+          <
+            String
+          >[], // Lista de comentários tipei como list string porque tava bugando
     },
     {
       'username': 'usuario2',
@@ -135,7 +137,7 @@ class _FeedScreenState extends State<FeedScreen> {
                     IconButton(
                       icon: Icon(Icons.comment),
                       onPressed: () {
-                        // Navegar para a tela de comentários
+                        // Navega para a tela de comentários
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -152,12 +154,7 @@ class _FeedScreenState extends State<FeedScreen> {
                         );
                       },
                     ),
-                    IconButton(
-                      icon: Icon(Icons.share),
-                      onPressed: () {
-                        // Lógica para compartilhar a postagem
-                      },
-                    ),
+                    IconButton(icon: Icon(Icons.share), onPressed: () {}),
                   ],
                 ),
               ],
@@ -183,7 +180,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       "https://via.placeholder.com/150"; // URL da foto de perfil
 
   void _navigateToEditProfile(BuildContext context) async {
-    // Navegar para a tela de edição e aguardar o resultado
+    // Navega para a tela de edição e aguarda o resultado
     final result = await Navigator.push(
       context,
       MaterialPageRoute(
@@ -364,7 +361,6 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
     String postContent = _postController.text;
 
     if (postContent.isNotEmpty) {
-      // Aqui você pode adicionar a lógica para publicar a postagem
       print('Postagem publicada: $postContent');
 
       // Retornar a postagem para a tela de feed
@@ -417,8 +413,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
 // Tela de Comentários
 class CommentScreen extends StatefulWidget {
   final String postId; // Identificador da postagem
-  final List<String>
-  comments; // Lista de comentários (agora tipada como List<String>)
+  final List<String> comments; // Lista de comentários
 
   CommentScreen({required this.postId, required this.comments});
 
