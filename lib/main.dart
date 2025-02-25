@@ -146,7 +146,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void _signUp() {
     if (_formKey.currentState!.validate()) {
-      // Aqui você pode adicionar a lógica de cadastro
       String name = _nameController.text;
       String email = _emailController.text;
       String password = _passwordController.text;
@@ -163,7 +162,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       print('Email: $email');
       print('Senha: $password');
 
-      // Navegar para a tela de login após o cadastro bem-sucedido
+      // Navega para a tela de login após o cadastro
       Navigator.pop(context);
     }
   }
